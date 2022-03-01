@@ -1,0 +1,203 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  font-family: Roboto, Helvetica, sans-serif;
+  /*****************************************************RESET******************************************************************/
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+menu,
+ul,
+li {
+  padding: 0;
+  margin: 0;
+}
+
+p,
+a,
+h4,
+button,
+span {
+  font-size: 1.6rem;
+  color: #f5f6f2;
+}
+
+h1 {
+  font-size: 3.2rem;
+}
+
+h2 {
+  font-size: 2.4rem;
+}
+
+h2 {
+  font-size: 1.872rem;
+}
+
+h1,
+h2,
+h3 {
+  color: black;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  font-size: large;
+  border-radius: 2rem;
+  color: #f5f6f2;
+}
+
+a:hover {
+  color: #c4c5c3;
+}
+
+/*****************************************************RESET******************************************************************/
+/********************************ALL COLORS***********************************************************************/
+/*
+Purple Heart	#5F27CD	Primary
+Bleached Cedar	#1f1420	Text
+SHIP COVE	    #7299B9	light accent
+HIPPIE PINK	    #B5415A	Dark accent
+BLEACHED CEDAR	#1F1420	Dark shades
+CARARRA         #F5F6F2 Light shades
+/*
+
+
+
+/*******************************************************************************************************************/
+header {
+  background-color: #5f27cd;
+  width: 100%;
+  padding: 2rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+header nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header nav a {
+  margin: 0 2rem;
+}
+
+header div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main {
+  background-color: #2f396a;
+}
+
+main div.img {
+  height: 50rem;
+  background: #5f27cd;
+  background: -webkit-gradient(linear, left top, left bottom, from(#5f27cd), to(#2f396a));
+  background: linear-gradient(180deg, #5f27cd 0%, #2f396a 100%);
+}
+
+main section {
+  padding: 5rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+main section h2 {
+  margin: 3rem 0;
+  color: #f5f6f2;
+  font-weight: bold;
+}
+
+main section article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+main section article div.card {
+  background: #f5f6f2;
+  width: 25rem;
+  padding: 1.5%;
+  border-radius: 2rem;
+}
+
+main section article div.card h3 {
+  color: #5f27cd;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  font-size: large;
+}
+
+main section article div.card p {
+  color: #000000;
+  text-align: justify;
+}
+
+main section article div.card a.btn {
+  color: #5f27cd;
+}
+
+main section article div.card:hover {
+  background-color: #c4c5c3;
+  cursor: pointer;
+}
+
+footer {
+  background-color: #5f27cd;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+footer nav {
+  margin: 2rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*# sourceMappingURL=style.css.map */

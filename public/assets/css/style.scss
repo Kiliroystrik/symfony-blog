@@ -1,0 +1,190 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    font-family: Roboto, Helvetica, sans-serif;
+    /*****************************************************RESET******************************************************************/
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+$Primary: #5f27cd;
+$Text: #000000;
+$light_accent: #7299b9;
+$Dark_accent: #b5415a;
+$Dark_shades: #2f396a;
+$Light_shades: #f5f6f2;
+$hover_light: #c4c5c3;
+
+html {
+    font-size: 62.5%;
+}
+
+menu,
+ul,
+li {
+    padding: 0;
+    margin: 0;
+}
+
+p,
+a,
+h4,
+button,
+span {
+    font-size: 1.6rem;
+    color: $Light_shades;
+}
+
+h1 {
+    font-size: 3.2rem;
+}
+
+h2 {
+    font-size: 2.4rem;
+}
+
+h2 {
+    font-size: 1.872rem;
+}
+
+h1,
+h2,
+h3 {
+    color: rgb(0, 0, 0);
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    font-size: large;
+    // padding: 0.7rem 1rem;
+    // border: solid 2px rgb(243, 104, 224);
+    border-radius: 2rem;
+    color: $Light_shades;
+    // background-color: $Primary;
+}
+
+a:hover {
+    // color: #01a3a4;
+    // color: rgb(243, 104, 224);
+    // color: linear-gradient(90deg, rgba(243, 104, 224, 1) 0%, rgba(255, 159, 243, 1) 100%);
+    color: $hover_light;
+}
+
+/*****************************************************RESET******************************************************************/
+
+// body {
+// background: rgb(95, 39, 205);
+// background: linear-gradient(90deg, rgba(95, 39, 205, 1) 0%, rgba(0, 0, 0, 0) 100%);
+// }
+/********************************ALL COLORS***********************************************************************/
+/*
+Purple Heart	#5F27CD	Primary
+Bleached Cedar	#1f1420	Text
+SHIP COVE	    #7299B9	light accent
+HIPPIE PINK	    #B5415A	Dark accent
+BLEACHED CEDAR	#1F1420	Dark shades
+CARARRA         #F5F6F2 Light shades
+/*
+
+
+
+/*******************************************************************************************************************/
+
+header {
+    background-color: $Primary;
+    width: 100%;
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    nav {
+        display: flex;
+        align-items: center;
+        a {
+            margin: 0 2rem;
+        }
+    }
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+main {
+    background-color: $Dark_shades;
+
+    // img {
+    //     width: 100%;
+    //     max-height: 130rem;
+    // }
+    div.img {
+        height: 50rem;
+        background: rgb(95, 39, 205);
+        background: linear-gradient(180deg, rgba(95, 39, 205, 1) 0%, rgba(47, 57, 106, 1) 100%);
+    }
+
+    section {
+        padding: 5rem 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        h2 {
+            margin: 3rem 0;
+            color: $Light_shades;
+            font-weight: bold;
+        }
+        article {
+            display: flex;
+            justify-content: space-around;
+            div.card {
+                background: $Light_shades;
+                width: 25rem;
+                padding: 1.5%;
+                border-radius: 2rem;
+                h3 {
+                    color: $Primary;
+                    margin-bottom: 2rem;
+                    font-weight: bold;
+                    font-size: large;
+                }
+                p {
+                    color: $Text;
+                    text-align: justify;
+                }
+
+                a.btn {
+                    // background-color: $Dark_accent;
+                    color: $Primary;
+                }
+            }
+
+            div.card:hover {
+                background-color: $hover_light;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+footer {
+    background-color: $Primary;
+    display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: space-around;
+
+    nav {
+        margin: 2rem 0;
+        display: flex;
+        width: 100%;
+        // flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+}
