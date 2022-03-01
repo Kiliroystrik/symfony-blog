@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategoryController!
+{% endblock %}
+
+{% block body %}
+
+	{% block main %}
+		<section>
+
+			<div>
+				<h1>
+					{{ post.title }}
+				</h1>
+				<p>
+					{{post.content}}
+				</p>
+			</div>
+
+		</section>
+	{% endblock %}
+{% endblock %}
