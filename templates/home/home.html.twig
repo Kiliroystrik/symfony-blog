@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!
+{% endblock %}
+
+{% block main %}
+
+	{# <img src="{{asset('assets/img/landing.jpg')}}" alt="landing"> #}
+
+	<section>
+		<h2>Nos Articles sur la Tech !</h2>
+		<article>
+
+			{% for post in posts %}
+				<div class="card">
+					<h3>
+						{{ post.title }}
+					</h3>
+					<p>
+						{{post.content|length > 50 ? post.content|slice(0, 230) ~ '...' : post.content | raw}}
+					</p>
+					<a class="btn" href="/post/{{post.id}}">lire</a>
+				</div>
+			{% endfor %}
+
+		</article>
+	</section>
+{% endblock %}
