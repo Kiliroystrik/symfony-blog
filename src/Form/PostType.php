@@ -3,9 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Post;
+use App\Entity\User;
+use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class PostType extends AbstractType
 {
@@ -14,11 +18,10 @@ class PostType extends AbstractType
         $builder
             ->add('title')
             ->add('content')
-            ->add('creation_date')
-            ->add('updated_date')
             ->add('published')
-            ->add('user')
-        ;
+            ->add('user', EntityType::class, ['class' => User::class, 'choice_label' => 'firstname'])
+            ->add('categories', EntityType::class, ['class' => Category::class, 'choice_label' => 'title', 'multiple' => true])
+            ->add('submit', SubmitType::class);;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
