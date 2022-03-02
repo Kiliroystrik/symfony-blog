@@ -19,7 +19,7 @@
 							{{post.content|length > 50 ? post.content|slice(0, 230) ~ '...' : post.content | raw}}
 						</p>
 
-						<a href="/post/{{post.id}}">lire</a>
+						<a href="{{path('post-detail', {id : post.id}) }}">lire</a>
 
 					</div>
 				{% endfor %}
