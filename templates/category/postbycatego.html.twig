@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategoryController!
+{% endblock %}
+
+{% block body %}
+
+	{% block main %}
+		<section>
+			<h2>les posts !</h2>
+			<article>
+
+				{% for post in postByCategory %}
+					<div class="card">
+						<h3>
+							{{ post.title }}
+						</h3>
+						<p>
+							{{post.content}}
+						</p>
+						{# <a href="{{ path('post-detail', {id: }) }}"></a> #}
+					</div>
+				{% endfor %}
+
+			</article>
+		</section>
+	{% endblock %}
+
+{% endblock %}
