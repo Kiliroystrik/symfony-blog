@@ -7,11 +7,19 @@
     margin: 0;
 }
 
-$Primary: #5f27cd;
-$Text: #000000;
+// $Primary: #5f27cd;
+// $Text: #000000;
+// $light_accent: #7299b9;
+// $Dark_accent: #b5415a;
+// $Dark_shades: #2f396a;
+// $Light_shades: #f5f6f2;
+// $hover_light: #c4c5c3;
+
+$Primary: #990d35;
+$Text: #1b1b1b;
 $light_accent: #7299b9;
 $Dark_accent: #b5415a;
-$Dark_shades: #2f396a;
+$Dark_shades: #424242;
 $Light_shades: #f5f6f2;
 $hover_light: #c4c5c3;
 
@@ -32,7 +40,7 @@ h4,
 button,
 span {
     font-size: 1.6rem;
-    color: $Light_shades;
+    color: $Text;
 }
 
 h1 {
@@ -63,7 +71,7 @@ a {
     // padding: 0.7rem 1rem;
     // border: solid 2px rgb(243, 104, 224);
     border-radius: 2rem;
-    color: $Light_shades;
+    color: $Text;
     // background-color: $Primary;
 }
 
@@ -71,7 +79,7 @@ a:hover {
     // color: #01a3a4;
     // color: rgb(243, 104, 224);
     // color: linear-gradient(90deg, rgba(243, 104, 224, 1) 0%, rgba(255, 159, 243, 1) 100%);
-    color: $hover_light;
+    color: #990d35;
 }
 
 /*****************************************************RESET******************************************************************/
@@ -95,9 +103,10 @@ CARARRA         #F5F6F2 Light shades
 /*******************************************************************************************************************/
 
 header {
-    background-color: $Primary;
+    background-color: $Light_shades;
     width: 100%;
     padding: 2rem 0;
+    border-bottom: #dcddd7 solid 1px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -116,65 +125,73 @@ header {
 }
 
 main {
-    background-color: $Dark_shades;
+    background-color: $Light_shades;
+    display: flex;
+    justify-content: center;
 
-    // img {
-    //     width: 100%;
-    //     max-height: 130rem;
-    // }
-    div.img {
-        height: 50rem;
-        background: rgb(95, 39, 205);
-        background: linear-gradient(180deg, rgba(95, 39, 205, 1) 0%, rgba(47, 57, 106, 1) 100%);
-    }
+    div.container {
+        max-width: 1920px;
+        width: 100%;
 
-    section {
-        padding: 5rem 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        h2 {
-            margin: 3rem 0;
-            color: $Light_shades;
-            font-weight: bold;
+        // img {
+        //     width: 100%;
+        //     max-height: 130rem;
+        // }
+        div.img {
+            height: 50rem;
+            // background: rgb(95, 39, 205);
+            // background: linear-gradient(180deg, rgba(95, 39, 205, 1) 0%, rgba(47, 57, 106, 1) 100%);
         }
-        article {
+
+        section {
+            padding: 5rem 0;
             display: flex;
-            justify-content: space-around;
-            div.card {
-                background: $Light_shades;
-                width: 25rem;
-                padding: 1.5%;
-                border-radius: 2rem;
-                h3 {
-                    color: $Primary;
-                    margin-bottom: 2rem;
-                    font-weight: bold;
-                    font-size: large;
-                }
-                p {
-                    color: $Text;
-                    text-align: justify;
-                }
-
-                a.btn {
-                    // background-color: $Dark_accent;
-                    color: $Primary;
-                }
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            h2 {
+                margin: 7rem 0;
+                color: $Text;
+                font-weight: bold;
             }
+            article {
+                display: flex;
+                justify-content: space-around;
+                div.card {
+                    background-color: #fff;
+                    width: 25rem;
+                    padding: 1.5%;
+                    border-radius: 2rem;
+                    h3 {
+                        color: $Text;
+                        margin-bottom: 2rem;
+                        font-weight: bold;
+                        font-size: large;
+                    }
+                    p {
+                        color: $Text;
+                        text-align: justify;
+                    }
 
-            div.card:hover {
-                background-color: $hover_light;
-                cursor: pointer;
+                    a.btn {
+                        // background-color: $Dark_accent;
+                        color: $Primary;
+                    }
+                }
+
+                div.card:hover {
+                    background-color: #348aa7;
+                    cursor: pointer;
+                }
             }
         }
     }
 }
 
 footer {
-    background-color: $Primary;
+    background-color: $Light_shades;
     display: flex;
+    border-top: #dcddd7 solid 1px;
     // flex-direction: column;
     // align-items: center;
     // justify-content: space-around;

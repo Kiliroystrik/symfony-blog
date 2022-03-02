@@ -24,7 +24,7 @@ h4,
 button,
 span {
   font-size: 1.6rem;
-  color: #f5f6f2;
+  color: #1b1b1b;
 }
 
 h1 {
@@ -53,11 +53,11 @@ a {
   text-decoration: none;
   font-size: large;
   border-radius: 2rem;
-  color: #f5f6f2;
+  color: #1b1b1b;
 }
 
 a:hover {
-  color: #c4c5c3;
+  color: #990d35;
 }
 
 /*****************************************************RESET******************************************************************/
@@ -75,9 +75,10 @@ CARARRA         #F5F6F2 Light shades
 
 /*******************************************************************************************************************/
 header {
-  background-color: #5f27cd;
+  background-color: #f5f6f2;
   width: 100%;
   padding: 2rem 0;
+  border-bottom: #dcddd7 solid 1px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -114,17 +115,25 @@ header div {
 }
 
 main {
-  background-color: #2f396a;
+  background-color: #f5f6f2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-main div.img {
+main div.container {
+  max-width: 1920px;
+  width: 100%;
+}
+
+main div.container div.img {
   height: 50rem;
-  background: #5f27cd;
-  background: -webkit-gradient(linear, left top, left bottom, from(#5f27cd), to(#2f396a));
-  background: linear-gradient(180deg, #5f27cd 0%, #2f396a 100%);
 }
 
-main section {
+main div.container section {
   padding: 5rem 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -139,13 +148,13 @@ main section {
   text-align: center;
 }
 
-main section h2 {
-  margin: 3rem 0;
-  color: #f5f6f2;
+main div.container section h2 {
+  margin: 7rem 0;
+  color: #1b1b1b;
   font-weight: bold;
 }
 
-main section article {
+main div.container section article {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -153,39 +162,40 @@ main section article {
       justify-content: space-around;
 }
 
-main section article div.card {
-  background: #f5f6f2;
+main div.container section article div.card {
+  background-color: #fff;
   width: 25rem;
   padding: 1.5%;
   border-radius: 2rem;
 }
 
-main section article div.card h3 {
-  color: #5f27cd;
+main div.container section article div.card h3 {
+  color: #1b1b1b;
   margin-bottom: 2rem;
   font-weight: bold;
   font-size: large;
 }
 
-main section article div.card p {
-  color: #000000;
+main div.container section article div.card p {
+  color: #1b1b1b;
   text-align: justify;
 }
 
-main section article div.card a.btn {
-  color: #5f27cd;
+main div.container section article div.card a.btn {
+  color: #990d35;
 }
 
-main section article div.card:hover {
-  background-color: #c4c5c3;
+main div.container section article div.card:hover {
+  background-color: #348aa7;
   cursor: pointer;
 }
 
 footer {
-  background-color: #5f27cd;
+  background-color: #f5f6f2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  border-top: #dcddd7 solid 1px;
 }
 
 footer nav {
