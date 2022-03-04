@@ -20,14 +20,37 @@
 			<div class="logo">
 				<a href="{{ path('home') }}">Blogger.io</a>
 			</div>
-			<nav>
-				<a href="{{ path('category') }}">Category</a>
-				<a href="{{ path('post') }}">Post</a>
-				<a href="#">link_start</a>
-				<a href="#">link_start</a>
-				<a href="#">link_start</a>
-			</nav>
-			<div class="avatar">A</div>
+
+			{% if  is_granted('ROLE_USER') %}
+				<nav>
+					<a href="{{path('post')}}">Articles</a>
+					{# <a href="https://localhost:8000/admin">admin</a> #}
+					<a href="{{path('category')}}">Categories</a>
+					{% if  is_granted('ROLE_USER') %}
+						<a href="{{path('add-category')}}">Créer une catégorie</a>
+						<a href="{{path('add-post')}}">Créer un article</a>
+					{% endif %}
+					<a href="https://localhost:8000/logout">Logout</a>
+
+					<div class="avatar">
+						<img src="{{ asset('uploads/avatar/' ~ app.user.avatar) }} " alt="profile">
+						<p>
+							{{app.user.firstname}}
+						</p>
+					</div>
+
+
+				</nav>
+			{% else %}
+				<nav>
+					<a href="{{path('post')}}">Articles</a>
+					<a href="{{path('category')}}">Categories</a>
+					<a href="https://localhost:8000/register">Inscription</a>
+					<a href="{{path('login')}}">Login</a>
+				</nav>
+			{% endif %}
+
+
 		</header>
 
 		<main>
