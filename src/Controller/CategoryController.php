@@ -6,6 +6,7 @@ use App\Entity\Category;
 use App\Entity\Post;
 use App\Form\CategoryFormType;
 use App\Repository\CategoryRepository;
+use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,16 +26,19 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/category/{id}', name: 'category-posts')]
-    public function allPosts(int $id, CategoryRepository $categoryRepository, Category $category): Response
+    #[Route('/category/{name}', name: 'category-posts')]
+    public function allPosts(PostRepository $post, Category $category = null): Response
     {
-        $categoryRepository = $categoryRepository->findAll($id);
 
+        if ($category == null) {
+            return $this->redirectToRoute("home");
+        }
 
+        $allPost = $category->getPosts();
 
         return $this->render('category/postbycatego.html.twig', [
-            'postByCategory' => $categoryRepository,
-            'id' => $category->getId(),
+            'posts' => $allPost,
+            'category' => $category,
         ]);
     }
 
