@@ -13,12 +13,7 @@ class CommentFormType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('content')
-            ->add('created_at')
-            ->add('updated_at')
-            ->add('post')
-            ->add('user')
-        ;
+            ->add('content');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

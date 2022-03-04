@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Post;
 use App\Form\PostType;
 use App\Repository\PostRepository;
@@ -42,8 +43,8 @@ class PostController extends AbstractController
 
         $post = new Post();
 
-        $post->setCreationDate(new \DateTime());
-        $post->setUpdatedDate(new \DateTime());
+        $post->setPublishedDate(new \DateTime());
+
 
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);

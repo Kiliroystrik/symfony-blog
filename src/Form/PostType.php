@@ -18,9 +18,8 @@ class PostType extends AbstractType
         $builder
             ->add('title')
             ->add('content')
-            ->add('published')
             ->add('user', EntityType::class, ['class' => User::class, 'choice_label' => 'firstname'])
-            ->add('categories', EntityType::class, ['class' => Category::class, 'choice_label' => 'title', 'multiple' => true])
+            ->add('categories', EntityType::class, ['class' => Category::class, 'choice_label' => 'name', 'multiple' => true])
             ->add('submit', SubmitType::class);;
     }
 
