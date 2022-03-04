@@ -2,11 +2,10 @@
 
 namespace App\Entity;
 
-use App\Entity\Category;
-use Doctrine\ORM\Mapping as ORM;
 use App\Repository\PostRepository;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
 class Post
@@ -19,26 +18,20 @@ class Post
     #[ORM\Column(type: 'string', length: 255)]
     private $title;
 
-    #[ORM\Column(type: 'text')]
-    private $content;
-
-    #[ORM\Column(type: 'date')]
-    private $creation_date;
-
-    #[ORM\Column(type: 'date')]
-    private $updated_date;
-
-    #[ORM\Column(type: 'boolean')]
-    private $published;
-
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'posts')]
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 
-    #[ORM\OneToMany(mappedBy: 'posts', targetEntity: Category::class)]
+    #[ORM\Column(type: 'text')]
+    private $content;
+
+    #[ORM\Column(type: 'datetime')]
+    private $publishedDate;
+
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'posts')]
     private $categories;
 
-    #[ORM\OneToMany(mappedBy: 'post', targetEntity: Comment::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'post', targetEntity: Comment::class)]
     private $comments;
 
     public function __construct()
@@ -46,6 +39,8 @@ class Post
         $this->categories = new ArrayCollection();
         $this->comments = new ArrayCollection();
     }
+
+  
 
     public function getId(): ?int
     {
@@ -64,54 +59,6 @@ class Post
         return $this;
     }
 
-    public function getContent(): ?string
-    {
-        return $this->content;
-    }
-
-    public function setContent(string $content): self
-    {
-        $this->content = $content;
-
-        return $this;
-    }
-
-    public function getCreationDate(): ?\DateTimeInterface
-    {
-        return $this->creation_date;
-    }
-
-    public function setCreationDate(\DateTimeInterface $creation_date): self
-    {
-        $this->creation_date = $creation_date;
-
-        return $this;
-    }
-
-    public function getUpdatedDate(): ?\DateTimeInterface
-    {
-        return $this->updated_date;
-    }
-
-    public function setUpdatedDate(\DateTimeInterface $updated_date): self
-    {
-        $this->updated_date = $updated_date;
-
-        return $this;
-    }
-
-    public function getPublished(): ?bool
-    {
-        return $this->published;
-    }
-
-    public function setPublished(bool $published): self
-    {
-        $this->published = $published;
-
-        return $this;
-    }
-
     public function getUser(): ?User
     {
         return $this->user;
@@ -124,8 +71,32 @@ class Post
         return $this;
     }
 
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(string $content): self
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    public function getPublishedDate(): ?\DateTimeInterface
+    {
+        return $this->publishedDate;
+    }
+
+    public function setPublishedDate(\DateTimeInterface $publishedDate): self
+    {
+        $this->publishedDate = $publishedDate;
+
+        return $this;
+    }
+
     /**
-     * @return Collection<int, Category>
+     * @return Collection|Category[]
      */
     public function getCategories(): Collection
     {
@@ -136,7 +107,6 @@ class Post
     {
         if (!$this->categories->contains($category)) {
             $this->categories[] = $category;
-            $category->setPosts($this);
         }
 
         return $this;
@@ -144,18 +114,13 @@ class Post
 
     public function removeCategory(Category $category): self
     {
-        if ($this->categories->removeElement($category)) {
-            // set the owning side to null (unless already changed)
-            if ($category->getPosts() === $this) {
-                $category->setPosts(null);
-            }
-        }
+        $this->categories->removeElement($category);
 
         return $this;
     }
 
     /**
-     * @return Collection<int, Comment>
+     * @return Collection|Comment[]
      */
     public function getComments(): Collection
     {
@@ -183,4 +148,6 @@ class Post
 
         return $this;
     }
+
+   
 }

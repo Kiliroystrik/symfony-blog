@@ -2,8 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\CategoryRepository;
+use App\Entity\Post;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CategoryRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
@@ -14,27 +17,33 @@ class Category
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $title;
+    private $name;
 
     #[ORM\Column(type: 'text')]
     private $description;
 
-    #[ORM\ManyToOne(targetEntity: Post::class, inversedBy: 'categories')]
+    #[ORM\ManyToMany(targetEntity: Post::class, mappedBy: 'categories')]
     private $posts;
+
+
+    public function __construct()
+    {
+        $this->posts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getName(): ?string
     {
-        return $this->title;
+        return $this->name;
     }
 
-    public function setTitle(string $title): self
+    public function setName(string $name): self
     {
-        $this->title = $title;
+        $this->name = $name;
 
         return $this;
     }
@@ -51,15 +60,35 @@ class Category
         return $this;
     }
 
-    public function getPosts(): ?Post
+    /**
+     * @return Collection|Post[]
+     */
+    public function getPosts(): Collection
     {
         return $this->posts;
     }
 
-    public function setPosts(?Post $posts): self
+    public function addPost(Post $post): self
     {
-        $this->posts = $posts;
+        if (!$this->posts->contains($post)) {
+            $this->posts[] = $post;
+            $post->addCategory($this);
+        }
 
         return $this;
+    }
+
+    public function removePost(Post $post): self
+    {
+        if ($this->posts->removeElement($post)) {
+            $post->removeCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

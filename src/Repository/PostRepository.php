@@ -2,10 +2,9 @@
 
 namespace App\Repository;
 
+use App\Entity\Category;
 use App\Entity\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
-use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -21,46 +20,51 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
-    /**
-     * @throws ORMException
-     * @throws OptimisticLockException
-     */
-    public function add(Post $entity, bool $flush = true): void
-    {
-        $this->_em->persist($entity);
-        if ($flush) {
-            $this->_em->flush();
-        }
-    }
-
-    /**
-     * @throws ORMException
-     * @throws OptimisticLockException
-     */
-    public function remove(Post $entity, bool $flush = true): void
-    {
-        $this->_em->remove($entity);
-        if ($flush) {
-            $this->_em->flush();
-        }
-    }
-
     // /**
     //  * @return Post[] Returns an array of Post objects
     //  */
-    /*
-    public function findByExampleField($value)
+
+    public function findPostsByCategory(Category $category)
+    {
+        //RETOURNE L'EQUIVALENT D'UN $category->getPosts() 
+        //À NOTER LE 'MEMBER OF' QUI PERMET DE VERIFIER TOUTES LES CATÉGORIES (RELATION MANY TO MANY)
+        $qb = $this->createQueryBuilder("p")
+            ->where(':category MEMBER OF p.categories')
+            ->setParameter('category', $category);
+
+        return $qb->getQuery()->getResult();
+    }
+
+
+
+    /* VERSION INNER JOIN */
+    public function search($val)
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
+            ->innerJoin('p.user', 'u', 'WITH', 'u.id = p.user')
+            ->andWhere('u.firstname LIKE  :val')
+            ->orWhere('p.title LIKE  :val')
+            ->orWhere('p.content LIKE  :val')
+            ->setParameter('val', "%" . $val . "%")
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
+
+    /* VERSION JOIN EQUIVALENTE */
+    public function search2($val)
+    {
+        return $this->createQueryBuilder('p')
+            ->join('p.user', 'u')
+            ->addSelect('u')
+            ->where('u.id = p.user')
+            ->andWhere('u.firstname LIKE  :val')
+            ->orWhere('p.title LIKE  :val')
+            ->orWhere('p.content LIKE  :val')
+            ->setParameter('val', "%" . $val . "%")
+            ->getQuery()
+            ->getResult();
+    }
+
 
     /*
     public function findOneBySomeField($value): ?Post
@@ -73,4 +77,17 @@ class PostRepository extends ServiceEntityRepository
         ;
     }
     */
+
+
+
+    public function findByDates($from, $to)
+    {
+        $qb = $this->createQueryBuilder("p");
+        $qb
+            ->andWhere('p.publishedDate BETWEEN :from AND :to')
+            ->setParameter('from', $from)
+            ->setParameter('to', $to);
+        $posts = $qb->getQuery()->getResult();
+        return $posts;
+    }
 }
