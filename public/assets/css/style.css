@@ -102,6 +102,21 @@ header nav a {
   margin: 0 2rem;
 }
 
+header nav div.avatar {
+  border: #990d35 2px solid;
+  border-radius: 2.5rem;
+  padding: 0.4rem 0.7rem;
+}
+
+header nav div.avatar img {
+  width: 30px;
+}
+
+header nav div.avatar p {
+  margin-left: 1rem;
+  font-weight: bold;
+}
+
 header div {
   display: -webkit-box;
   display: -ms-flexbox;

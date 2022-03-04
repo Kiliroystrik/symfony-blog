@@ -116,6 +116,19 @@ header {
         a {
             margin: 0 2rem;
         }
+        div.avatar {
+            border: $Primary 2px solid;
+            border-radius: 2.5rem;
+            padding: 0.4rem 0.7rem;
+
+            img {
+                width: 30px;
+            }
+            p {
+                margin-left: 1rem;
+                font-weight: bold;
+            }
+        }
     }
     div {
         display: flex;
